@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+
+    <!-- FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+    <div class="logo">
+        💳 CashFlow</div>
+
+    <ul class="menu"><li><a href="index.html">🏠 Home</a></li>
+
+        <li> <a href="cash-flow.html">💰 Cash Flow</a></li>
+
+        <li><a href="data-user.html">👤 Data User</a></li>
+
+        <li><a href="#">📊 Analytics</a></li>
+
+        <li><a href="login.html">🚪 Logout</a></li>
+
+    </ul>
+
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+
+        <div>
+            <h1>Home</h1>
+            <p id="welcome">
+                Selamat Datang 👋
+            </p>
+        </div>
+
+    </div>
+
+    <!-- CARD DASHBOARD -->
+    <div class="cards">
+
+        <div class="card-box">
+            <h3>Total Saldo</h3>
+            <h1 id="total-saldo">Rp 5.000.000</h1>
+        </div>
+
+        <div class="card-box">
+            <h3>Pemasukan</h3>
+            <h1 id="pemasukan">Rp 7.500.000</h1>
+        </div>
+
+        <div class="card-box">
+            <h3>Pengeluaran</h3>
+            <h1 id="pengeluaran">Rp 2.500.000</h1>
+        </div>
+
+    </div>
+
+    <!-- QUICK MENU -->
+    <div class="quick-menu">
+
+        <button onclick="window.location.href='cash-flow.html'">
+            💰 Cash Flow
+        </button>
+
+        <button onclick="window.location.href='data-user.html'">
+            👤 Data User
+        </button>
+
+        <button onclick="logout()">
+            🚪 Logout
+        </button>
+
+    </div>
+
+</div>
+
+<script src="dashboard.js"></script>
+
+</body>
+</html>

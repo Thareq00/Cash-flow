@@ -1,0 +1,28 @@
+*,
+html{
+
+}
+
+body{
+  background: #111;
+  color:#ffd700;
+  font-family: Arial;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.box{
+    background:#052659;
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    justify-content: center;
+}
+
+button{
+    background: #ffd700;
+    border: #111;
+    cursor:pointer; 
+}

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Flow Pro</title>
+
+    <link rel="stylesheet" href="cash-flow.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- TOP HEADER -->
+<div class="top-bar">
+    <h2 id="nama-user">Hi User</h2>
+</div>
+
+<!-- BALANCE CARD -->
+    <!-- SUMMARY -->
+<div class="summary-box">
+    <div class="summary-card total"><p>Total Saldo</p>
+        <h1 id="saldo">Rp 0</h1>
+
+    </div>
+    
+    <div class="summary-card masuk"><p>Total Pemasukan</p>
+        <h2 id="total-masuk">Rp 0</h2>
+
+    </div>
+
+    <div class="summary-card keluar"><p>Total Pengeluaran</p>
+         <h2 id="total-keluar"> Rp 0</h2>
+
+    </div>
+    
+
+</div> 
+
+<!-- QUICK ACTION (FIXED UX) -->
+<div class="quick-action">
+
+    <button onclick="setMode('masuk')">
+        💰 Tambah Uang
+    </button>
+
+    <button onclick="setMode('keluar')">
+        💸 Pengeluaran
+    </button>
+
+</div>
+
+<!-- FORM -->
+<div class="card form-box">
+
+    <h3 id="form-title">Tambah Transaksi</h3>
+
+    <form id="cashForm">
+
+        <input
+            type="text"
+            id="keterangan"
+            placeholder="Keterangan"
+            required
+        >
+
+        <input
+            type="number"
+            id="jumlah"
+            placeholder="Jumlah"
+            required
+        >
+
+        <select id="tipe">
+            <option value="masuk">💰 Masuk</option>
+            <option value="keluar">💸 Keluar</option>
+        </select>
+
+        <button type="submit">
+            Simpan Transaksi
+        </button>
+
+    </form>
+
+</div>
+
+<!-- LIST -->
+<div class="card list-box">
+
+    <h3>Riwayat Transaksi</h3>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Keterangan</th>
+                <th>Tipe</th>
+                <th>Jumlah</th>
+                <th>Tanggal</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+
+        <tbody id="data-transaksi"></tbody>
+
+    </table>
+
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+
+    <button id="home">🏠</button>
+    <button>📊</button>
+    <button>💳</button>
+    <button>⚙️</button>
+
+</div>
+
+<script src="cash-flow.js"></script>
+
+</body>
+</html>
