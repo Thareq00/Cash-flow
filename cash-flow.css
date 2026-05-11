@@ -52,11 +52,6 @@ body {
     text-align: center;
     margin: 20px;
 }
-    }
-
-.balance-card{
-    margin-left: 20px
-}
 
 .quick-action{
     margin-left: 20px
@@ -96,9 +91,8 @@ body {
 }
 /* SUMMARY */
 .summary-box {
-    display: flex;
-    gap: 10px;
-    margin: 15px;
+    display: grid;
+    grid-template-columns: 1fr;
 }
 
 .summary-card {
@@ -240,5 +234,71 @@ td button:last-child {
     .navbar-ul {
         flex-direction: column;
         text-align: center;
+    }
+}
+
+/* MOBILE FIX */
+@media (max-width: 600px){
+
+    body{
+        overflow-x:hidden;
+    }
+
+    /* SUMMARY jadi vertical */
+    .summary-box{
+        flex-direction:column;
+    }
+
+    /* Card full */
+    .summary-card,
+    .saldo,
+    .total-masuk,
+    .total-keluar,
+    .card{
+        width:100%;
+        margin:10px 0;
+    }
+
+    /* Hilangkan margin kiri */
+    .balance-card,
+    .quick-action{
+        margin-left:0;
+    }
+
+    /* Table scroll */
+    .list-box{
+        overflow-x:auto;
+    }
+
+    table{
+        min-width:600px;
+    }
+
+    /* Navbar mobile */
+    .bottom-nav{
+        left:0;
+        padding:10px;
+    }
+
+    /* Font lebih kecil */
+    .saldo h1{
+        font-size:24px;
+    }
+
+    .summary-card h2{
+        font-size:18px;
+    }
+
+    /* Button lebih rapih */
+    td button{
+        font-size:10px;
+        padding:5px 8px;
+    }
+
+    /* Quick action */
+    .quick-action{
+        display:flex;
+        flex-direction:column;
+        gap:10px;
     }
 }
