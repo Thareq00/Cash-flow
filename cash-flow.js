@@ -2,126 +2,97 @@ let form = document.getElementById("cashForm");
 let table = document.getElementById("data-transaksi");
 let saldoText = document.getElementById("saldo");
 let namaUser = document.getElementById("nama-user");
+
+let totalMasukText = document.getElementById("total-masuk");
+let totalKeluarText = document.getElementById("total-keluar");
+
+/* CEK LOGIN USER DULU (WAJIB DI ATAS) */
 let currentUser = localStorage.getItem("loginUser");
-namaUser.innerHTML =`Hallo ${currentUser.toUpperCase()}`;
+
 if (!currentUser) {
-
     alert("Silakan login terlebih dahulu!");
-
     window.location.href = "login.html";
 }
-/* ELEMENT */
-let totalMasukText =
-    document.getElementById("total-masuk");
 
-let totalKeluarText =
-    document.getElementById("total-keluar");
-/* KEY TRANSAKSI USER */
-let transaksiKey =
-    `transaksi_${currentUser}`;
+/* SET NAMA USER */
+namaUser.innerHTML = `Hallo ${currentUser.toUpperCase()}`;
 
-/* DATA TRANSAKSI USER */
-let transaksi =
-    JSON.parse(
-        localStorage.getItem(transaksiKey)
-    ) || [];
-/* TAMPILKAN DATA */
+/* KEY TRANSAKSI */
+let transaksiKey = `transaksi_${currentUser}`;
+
+/* DATA TRANSAKSI */
+let transaksi = JSON.parse(localStorage.getItem(transaksiKey)) || [];
+
+/* TAMPIL DATA */
 function tampilData() {
+
     let totalMasuk = 0;
     let totalKeluar = 0;
+    let saldo = 0;
 
     table.innerHTML = "";
 
-    let saldo = 0;
-
     transaksi.forEach((item, index) => {
 
-        if(item.tipe === "masuk"){
-            saldo += Number(item.jumlah);
-            totalMasuk += Number(item.jumlah);
+        let jumlah = Number(item.jumlah);
+
+        if (item.tipe === "masuk") {
+            saldo += jumlah;
+            totalMasuk += jumlah;
         } else {
-            saldo -= Number(item.jumlah);
-            totalKeluar += Number(item.jumlah);
+            saldo -= jumlah;
+            totalKeluar += jumlah;
         }
 
         table.innerHTML += `
-    <tr>
-
-        <td>${index + 1}</td>
-
-        <td>${item.keterangan}</td>
-
-        <td>${item.tipe}</td>
-
-        <td>
-            Rp ${Number(item.jumlah)
-                .toLocaleString("id-ID")}
-        </td>
-
-        <td>${item.tanggal}</td>
-
-        <td>
-
-            <button onclick="hapusTransaksi(${index})">
-                Hapus
-            </button>
-
-            <button onclick="editTransaksi(${index})">
-                Edit
-            </button>
-
-        </td>
-
-    </tr>
-`;
+            <tr>
+                <td>${index + 1}</td>
+                <td>${item.keterangan}</td>
+                <td>${item.tipe}</td>
+                <td>Rp ${jumlah.toLocaleString("id-ID")}</td>
+                <td>${item.tanggal}</td>
+                <td>
+                    <button onclick="hapusTransaksi(${index})">Hapus</button>
+                    <button onclick="editTransaksi(${index})">Edit</button>
+                </td>
+            </tr>
+        `;
     });
 
     saldoText.innerHTML = `Rp ${saldo.toLocaleString("id-ID")}`;
-    totalMasukText.innerHTML =
-    "Rp " + totalMasuk.toLocaleString("id-ID");
-
-    totalKeluarText.innerHTML =
-    "Rp " + totalKeluar.toLocaleString("id-ID");
+    totalMasukText.innerHTML = `Rp ${totalMasuk.toLocaleString("id-ID")}`;
+    totalKeluarText.innerHTML = `Rp ${totalKeluar.toLocaleString("id-ID")}`;
 }
 
 /* TAMBAH TRANSAKSI */
-form.addEventListener("submit", function(event){
-
+form.addEventListener("submit", function (event) {
     event.preventDefault();
 
     let keterangan = document.getElementById("keterangan").value;
     let jumlah = document.getElementById("jumlah").value;
     let tipe = document.getElementById("tipe").value;
-    let tanggal = new Date().toLocaleDateString("id-ID");
+
     transaksi.push({
-        keterangan: keterangan,
-        jumlah: jumlah,
-        tipe: tipe,
+        keterangan,
+        jumlah,
+        tipe,
         tanggal: new Date().toLocaleDateString("id-ID")
     });
 
-    localStorage.setItem(
-    transaksiKey,
-    JSON.stringify(transaksi)
-);
-    tampilData();
+    localStorage.setItem(transaksiKey, JSON.stringify(transaksi));
 
+    tampilData();
     form.reset();
 });
 
-/* HAPUS TRANSAKSI */
+/* HAPUS */
 function hapusTransaksi(index) {
 
-    let yakin = confirm("Yakin ingin menghapus transaksi ini?");
-
-    if (yakin) {
+    if (confirm("Yakin ingin menghapus transaksi ini?")) {
 
         transaksi.splice(index, 1);
 
-        localStorage.setItem(
-            transaksiKey,
-            JSON.stringify(transaksi)
-        );
+        localStorage.setItem(transaksiKey, JSON.stringify(transaksi));
 
         tampilData();
 
@@ -129,59 +100,42 @@ function hapusTransaksi(index) {
     }
 }
 
-/* EDIT TRANSAKSI */
+/* EDIT */
 function editTransaksi(index) {
 
     let data = transaksi[index];
 
-    let keterangan = prompt(
-        "Masukkan keterangan baru:",
-        data.keterangan
-    );
-
-    let jumlah = prompt(
-        "Masukkan jumlah uang baru:",
-        data.jumlah
-    );
-
-    let tipe = prompt(
-        "Masukkan tipe transaksi (masuk/keluar):",
-        data.tipe
-    );
+    let keterangan = prompt("Edit keterangan:", data.keterangan);
+    let jumlah = prompt("Edit jumlah:", data.jumlah);
+    let tipe = prompt("Edit tipe (masuk/keluar):", data.tipe);
 
     if (!keterangan || !jumlah || !tipe) {
-
         alert("Data tidak boleh kosong!");
-
         return;
     }
 
     transaksi[index] = {
-
-    keterangan: keterangan,
-
-    jumlah: jumlah,
-
-    tipe: tipe,
-
-    tanggal: data.tanggal
+        keterangan,
+        jumlah,
+        tipe,
+        tanggal: data.tanggal
     };
-    localStorage.setItem(
-        transaksiKey,
-        JSON.stringify(transaksi)
-    );
+
+    localStorage.setItem(transaksiKey, JSON.stringify(transaksi));
 
     tampilData();
 
     alert("Transaksi berhasil diedit!");
 }
 
-/*BOTTOM NAV*/
-let home = document.getElementById("home");
-home.addEventListener("click", function () {
+/* NAV BUTTON (INI SESUAI HTML KAMU) */
+function goHome() {
     window.location.href = "index.html";
-});
+}
 
+function goDashboard() {
+    window.location.href = "dashboard.html";
+}
 
-/* LOAD */
+/* LOAD DATA AWAL */
 tampilData();
