@@ -8,29 +8,61 @@
 /* BODY */
 body{
     font-family:'Inter',sans-serif;
-    background:#0b1220;
+
+    background:
+        radial-gradient(circle at top left, #1e293b, transparent 50%),
+        radial-gradient(circle at bottom right, #0b1220, #111827),
+        #0b1220;
+
     color:white;
+
     display:flex;
+
+    overflow-x:hidden;
 }
 
-/* SIDEBAR */
+/* ===== GLASS EFFECT BASE ===== */
+.sidebar,
+.card-box,
+.topbar,
+.quick-menu button{
+    background:rgba(255,255,255,0.06);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,0.10);
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,0.35),
+        inset 0 1px 1px rgba(255,255,255,0.08);
+
+    transition:0.3s ease;
+}
+
+/* ===== SIDEBAR ===== */
 .sidebar{
     width:250px;
     height:100vh;
-    background:#111827;
+
     padding:20px;
+
     position:fixed;
     left:0;
     top:0;
-    border-right:1px solid rgba(255,255,255,0.05);
+
+    border-right:1px solid rgba(255,255,255,0.08);
+
+    animation:slideInLeft 0.8s ease;
 }
 
 /* LOGO */
 .logo{
     font-size:24px;
-    font-weight:bold;
+    font-weight:700;
     margin-bottom:40px;
     text-align:center;
+
+    animation:float 3s ease-in-out infinite;
 }
 
 /* MENU */
@@ -45,15 +77,28 @@ body{
 .menu li a{
     text-decoration:none;
     color:white;
+
     display:block;
+
     padding:12px;
+
     border-radius:12px;
+
     transition:0.3s;
 }
 
+/* hover glow */
 .menu li a:hover{
     background:linear-gradient(135deg,#2563eb,#38bdf8);
     color:black;
+
+    transform:translateX(5px);
+    box-shadow:0 0 15px rgba(56,189,248,0.4);
+}
+
+/* ACTIVE GLOW ANIMATION */
+.menu li a:active{
+    transform:scale(0.98);
 }
 
 /* MAIN CONTENT */
@@ -61,11 +106,17 @@ body{
     margin-left:250px;
     width:100%;
     padding:20px;
+
+    animation:fadeIn 0.8s ease;
 }
 
 /* TOPBAR */
 .topbar{
     margin-bottom:25px;
+    padding:20px;
+    border-radius:20px;
+
+    animation:floatSoft 4s ease-in-out infinite;
 }
 
 .topbar p{
@@ -80,13 +131,25 @@ body{
     flex-wrap:wrap;
 }
 
+/* CARD BOX */
 .card-box{
     flex:1;
     min-width:220px;
-    background:#111827;
+
     padding:20px;
+
     border-radius:20px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.3);
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+
+    transition:0.4s ease;
+
+    animation:fadeUp 0.8s ease;
+}
+
+.card-box:hover{
+    transform:translateY(-8px) scale(1.02);
+    box-shadow:0 15px 40px rgba(56,189,248,0.2);
 }
 
 .card-box h3{
@@ -106,19 +169,65 @@ body{
     flex-wrap:wrap;
 }
 
+/* BUTTON */
 .quick-menu button{
     padding:12px 20px;
+
     border:none;
     border-radius:12px;
-    background:linear-gradient(135deg,#2563eb,#38bdf8);
+
+    background:rgba(255,255,255,0.08);
+
     color:white;
+
     font-weight:bold;
+
     cursor:pointer;
-    transition:0.3s;
+
+    transition:0.3s ease;
+
+    backdrop-filter:blur(10px);
+
+    animation:popIn 0.6s ease;
 }
 
 .quick-menu button:hover{
-    transform:translateY(-3px);
+    transform:translateY(-5px) scale(1.05);
+
+    background:rgba(56,189,248,0.3);
+
+    box-shadow:0 0 20px rgba(56,189,248,0.4);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes fadeUp{
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes slideInLeft{
+    from{transform:translateX(-100%); opacity:0;}
+    to{transform:translateX(0); opacity:1;}
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-8px);}
+}
+
+@keyframes floatSoft{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-4px);}
+}
+
+@keyframes popIn{
+    from{transform:scale(0.8); opacity:0;}
+    to{transform:scale(1); opacity:1;}
 }
 
 /* RESPONSIVE */

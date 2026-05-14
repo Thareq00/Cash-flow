@@ -2,24 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cash Flow</title>
 
-    <link
-        rel="stylesheet"
-        href="cash-flow.css"
-    >
+    <link rel="stylesheet" href="cash-flow.css">
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-        rel="stylesheet"
-    >
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -28,16 +16,11 @@
     <header class="top-bar">
 
         <div>
-
-            <h2>
-                💳 Cash Flow
-            </h2>
-
-            <p id="nama-user">
-                Hi User
-            </p>
-
+            <h2>💳 Cash Flow</h2>
+            <p id="nama-user">Hi User</p>
         </div>
+
+                </div>
 
     </header>
 
@@ -45,33 +28,18 @@
     <section class="summary-box">
 
         <div class="summary-card total">
-
             <p>Total Balance</p>
-
-            <h1 id="saldo">
-                Rp 0
-            </h1>
-
+            <h1 id="saldo">Rp 0</h1>
         </div>
 
         <div class="summary-card masuk">
-
             <p>Income</p>
-
-            <h2 id="total-masuk">
-                Rp 0
-            </h2>
-
+            <h2 id="total-masuk">Rp 0</h2>
         </div>
 
         <div class="summary-card keluar">
-
             <p>Expense</p>
-
-            <h2 id="total-keluar">
-                Rp 0
-            </h2>
-
+            <h2 id="total-keluar">Rp 0</h2>
         </div>
 
     </section>
@@ -79,17 +47,8 @@
     <!-- ACTION -->
     <section class="quick-action">
 
-        <button
-            onclick="setMode('masuk')"
-        >
-            💰 Income
-        </button>
-
-        <button
-            onclick="setMode('keluar')"
-        >
-            💸 Expense
-        </button>
+        <button onclick="setMode('masuk')">💰 Income</button>
+        <button onclick="setMode('keluar')">💸 Expense</button>
 
     </section>
 
@@ -97,46 +56,21 @@
     <section class="card form-box">
 
         <div class="form-header">
-
-            <h3 id="form-title">
-                Add Transaction
-            </h3>
-
+            <h3 id="form-title">Add Transaction</h3>
         </div>
 
         <form id="cashForm">
 
-            <input
-                type="text"
-                id="keterangan"
-                placeholder="Transaction Description"
-                required
-            >
+            <input type="text" id="keterangan" placeholder="Transaction Description" required>
 
-            <input
-                type="number"
-                id="jumlah"
-                placeholder="Amount"
-                required
-            >
+            <input type="number" id="jumlah" placeholder="Amount" required>
 
             <select id="tipe">
-
-                <option value="masuk">
-                    💰 Income
-                </option>
-
-                <option value="keluar">
-                    💸 Expense
-                </option>
-
+                <option value="masuk">💰 Income</option>
+                <option value="keluar">💸 Expense</option>
             </select>
 
-            <button type="submit">
-
-                Save Transaction
-
-            </button>
+            <button type="submit">Save Transaction</button>
 
         </form>
 
@@ -146,40 +80,24 @@
     <section class="card list-box">
 
         <div class="list-header">
-
-            <h3>
-                Transaction History
-            </h3>
-
+            <h3>Transaction History</h3>
         </div>
 
         <div class="table-wrapper">
 
             <table>
-
                 <thead>
-
                     <tr>
-
                         <th>No</th>
-
                         <th>Description</th>
-
                         <th>Type</th>
-
                         <th>Amount</th>
-
                         <th>Date</th>
-
                         <th>Action</th>
-
                     </tr>
-
                 </thead>
 
-                <tbody id="data-transaksi">
-
-                </tbody>
+                <tbody id="data-transaksi"></tbody>
 
             </table>
 
@@ -189,5 +107,39 @@
 
     <script src="cash-flow.js"></script>
 
+    <!-- NAV SCRIPT -->
+    <script>
+        function goHome() {
+            // kalau pakai GitHub Pages
+            window.location.href = "./index.html";
+        }
+
+        function goDashboard() {
+            // ganti kalau file dashboard kamu beda
+            window.location.href = "./dashboard.html";
+        }
+    </script>
+<!-- BOTTOM NAVIGATION -->
+<div class="bottom-nav">
+
+    <button onclick="goHome()">
+        🏠 Home
+    </button>
+
+    <button onclick="goDashboard()">
+        📊 Dashboard
+    </button>
+
+</div>
+
+<script>
+function goHome() {
+    window.location.href = "./index.html";
+}
+
+function goDashboard() {
+    window.location.href = "./dashboard.html";
+}
+</script>
 </body>
 </html>

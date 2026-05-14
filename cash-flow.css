@@ -11,6 +11,7 @@ body{
     min-height:100vh;
 
     padding:30px;
+    padding-bottom:110px; /* 🔥 FIX: ruang untuk bottom nav */
 
     font-family:
         -apple-system,
@@ -146,17 +147,14 @@ body::after{
 }
 
 .summary-card:hover{
-
-    transform:
-        translateY(-5px);
+    transform:translateY(-5px);
 }
 
 .summary-card p{
 
     font-size:15px;
 
-    color:
-        rgba(255,255,255,0.7);
+    color:rgba(255,255,255,0.7);
 
     margin-bottom:14px;
 }
@@ -169,20 +167,9 @@ body::after{
     font-weight:700;
 }
 
-.total h1{
-
-    color:#facc15;
-}
-
-.masuk h2{
-
-    color:#4ade80;
-}
-
-.keluar h2{
-
-    color:#f87171;
-}
+.total h1{ color:#facc15; }
+.masuk h2{ color:#4ade80; }
+.keluar h2{ color:#f87171; }
 
 /* QUICK ACTION */
 .quick-action{
@@ -198,7 +185,7 @@ body::after{
     margin-bottom:28px;
 }
 
-/* BUTTON */
+/* BUTTON GLOBAL */
 button{
 
     flex:1;
@@ -217,27 +204,22 @@ button{
 
     color:white;
 
-    background:
-        rgba(255,255,255,0.10);
+    background:rgba(255,255,255,0.10);
 
     backdrop-filter:blur(12px);
 
     transition:0.3s;
 
-    border:
-        1px solid rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.08);
 }
 
 button:hover{
 
-    transform:
-        translateY(-3px);
+    transform:translateY(-3px);
 
-    background:
-        rgba(255,255,255,0.16);
+    background:rgba(255,255,255,0.16);
 
-    box-shadow:
-        0 8px 18px rgba(255,255,255,0.08);
+    box-shadow:0 8px 18px rgba(255,255,255,0.08);
 }
 
 /* FORM */
@@ -251,23 +233,18 @@ button:hover{
 }
 
 .form-header{
-
     margin-bottom:20px;
 }
 
 .form-header h3{
-
     font-size:24px;
-
     font-weight:700;
 }
 
 form{
 
     display:flex;
-
     flex-direction:column;
-
     gap:16px;
 }
 
@@ -280,7 +257,6 @@ select{
     padding:16px;
 
     border:none;
-
     outline:none;
 
     border-radius:18px;
@@ -289,11 +265,9 @@ select{
 
     color:white;
 
-    background:
-        rgba(255,255,255,0.08);
+    background:rgba(255,255,255,0.08);
 
-    border:
-        1px solid rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.08);
 
     backdrop-filter:blur(10px);
 
@@ -301,23 +275,16 @@ select{
 }
 
 input::placeholder{
-
-    color:
-        rgba(255,255,255,0.5);
+    color:rgba(255,255,255,0.5);
 }
 
 input:focus,
 select:focus{
-
-    border:
-        1px solid rgba(255,255,255,0.25);
-
-    background:
-        rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.25);
+    background:rgba(255,255,255,0.12);
 }
 
 select option{
-
     background:#111827;
 }
 
@@ -330,24 +297,19 @@ select option{
 }
 
 .list-header{
-
     margin-bottom:20px;
 }
 
 .list-header h3{
-
     font-size:24px;
 }
 
 .table-wrapper{
-
     overflow-x:auto;
 }
 
 table{
-
     width:100%;
-
     border-collapse:collapse;
 }
 
@@ -359,57 +321,99 @@ th{
 
     font-size:14px;
 
-    color:
-        rgba(255,255,255,0.75);
+    color:rgba(255,255,255,0.75);
 }
 
 td{
 
     padding:16px;
 
-    border-top:
-        1px solid rgba(255,255,255,0.08);
+    border-top:1px solid rgba(255,255,255,0.08);
 
-    color:
-        rgba(255,255,255,0.9);
+    color:rgba(255,255,255,0.9);
 }
 
 /* ACTION BUTTON */
 td button{
-
     padding:10px 14px;
-
     font-size:13px;
-
     margin-right:8px;
+}
+
+/* BOTTOM NAVIGATION */
+.bottom-nav {
+
+    position: fixed;
+
+    bottom: 25px; /* 🔥 dinaikkan */
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    gap: 12px;
+
+    padding: 10px 14px;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border-radius: 16px;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+
+    z-index: 999; /* 🔥 penting */
+}
+
+.bottom-nav button {
+
+    padding: 8px 14px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    background: rgba(255, 255, 255, 0.4);
+
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.bottom-nav button:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.7);
 }
 
 /* MOBILE */
 @media(max-width:768px){
 
     body{
-
         padding:18px;
+        padding-bottom:120px; /* 🔥 fix mobile */
     }
 
     .summary-box{
-
         grid-template-columns:1fr;
     }
 
     .quick-action{
-
         flex-direction:column;
     }
 
     table{
-
         min-width:700px;
     }
 
     .top-bar h2{
-
         font-size:24px;
     }
-
 }
