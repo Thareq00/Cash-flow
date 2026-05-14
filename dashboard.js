@@ -7,6 +7,8 @@ if (!user) {
 
 }
 
+/* SAMAKAN FORMAT USER */
+user = user.trim().toLowerCase();
 /* WELCOME TEXT */
 document.getElementById("welcome").innerHTML =
     "Selamat datang, " + user + " 👋";
