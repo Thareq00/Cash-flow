@@ -132,5 +132,23 @@ function goHome() {
     window.location.href = "index.html";
 }
 
+/* AMBIL DATA LAMA */
+let oldKey = `transaksi_${localStorage.getItem("loginUser")}`;
+
+/* KEY BARU */
+let transaksiKey = `transaksi_${currentUser}`;
+
+/* PINDAHKAN DATA LAMA */
+if (
+    oldKey !== transaksiKey &&
+    localStorage.getItem(oldKey)
+) {
+
+    localStorage.setItem(
+        transaksiKey,
+        localStorage.getItem(oldKey)
+    );
+
+}
 /* LOAD */
 tampilData()
