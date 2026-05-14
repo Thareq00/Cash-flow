@@ -1,15 +1,22 @@
-let form = document.getElementById("cashForm");
+llet form = document.getElementById("cashForm");
 let table = document.getElementById("data-transaksi");
 let saldoText = document.getElementById("saldo");
 let namaUser = document.getElementById("nama-user");
+let totalMasukText = document.getElementById("total-masuk");
+let totalKeluarText = document.getElementById("total-keluar");
+
+/* CEK LOGIN HARUS DI ATAS */
 let currentUser = localStorage.getItem("loginUser");
-namaUser.innerHTML =`Hallo ${currentUser.toUpperCase()}`;
+
 if (!currentUser) {
-
     alert("Silakan login terlebih dahulu!");
-
     window.location.href = "login.html";
+    throw new Error("User belum login");
 }
+
+currentUser = currentUser.trim().toLowerCase();
+
+namaUser.innerHTML = `Hallo ${currentUser}`;
 /* ELEMENT */
 let totalMasukText =
     document.getElementById("total-masuk");
@@ -19,6 +26,7 @@ let totalKeluarText =
 /* KEY TRANSAKSI USER */
 let transaksiKey =
     `transaksi_${currentUser}`;
+
 
 /* DATA TRANSAKSI USER */
 let transaksi =
@@ -177,10 +185,9 @@ function editTransaksi(index) {
 }
 
 /*BOTTOM NAV*/
-let home = document.getElementById("home");
-home.addEventListener("click", function () {
+function goHome() {
     window.location.href = "index.html";
-});
+}
 
 
 /* LOAD */
